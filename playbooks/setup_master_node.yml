@@ -1,0 +1,11 @@
+---
+- name: Setup Master Node
+  hosts: "{{ hostname | default('127.0.0.1') }}"
+  sudo: yes
+  gather_facts: false
+  tasks:
+  - name: Update repositories cache and install aptitude required for apt-get upgrade
+    apt: name=aptitude state=latest update_cache=yes
+
+  - name: upgrade packages
+    apt: upgrade=yes

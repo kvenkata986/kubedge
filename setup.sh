@@ -4,17 +4,17 @@ export ANSIBLE_HOST_KEY_CHECKING=False
 
 setup_node() {
   echo "$(tput setaf 2)===============================================================$(tput setaf 9)"
-  echo "$(tput setaf 2)=============== Installing and Upgrading Ansible ==============$(tput setaf 9)"
+  echo "$(tput setaf 2)====================== Setup Node =============================$(tput setaf 9)"
   echo "$(tput setaf 2)===============================================================$(tput setaf 9)"
-
 }
 
 install_ansible() {
+  ansible_version=`sudo apt-cache policy ansible | grep --color -i Candidate | awk '{print $2}'`
   echo "$(tput setaf 2)===============================================================$(tput setaf 9)"
-  echo "$(tput setaf 2)=============== Installing and Upgrading Ansible ==============$(tput setaf 9)"
+  echo "$(tput setaf 2)==== Installing and Upgrading Ansible to $ansible_version =====$(tput setaf 9)"
   echo "$(tput setaf 2)===============================================================$(tput setaf 9)"
   sudo apt-get update
-  sudo apt-get install --upgrade ansible
+  sudo apt-get install --upgrade ansible -y
 }
 
 
