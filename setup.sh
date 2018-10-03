@@ -6,6 +6,7 @@ setup_node() {
   echo "$(tput setaf 2)===============================================================$(tput setaf 9)"
   echo "$(tput setaf 2)====================== Setup Node =============================$(tput setaf 9)"
   echo "$(tput setaf 2)===============================================================$(tput setaf 9)"
+  ansible-playbook  playbooks/setup_master_node.yml
 }
 
 install_ansible() {
@@ -17,8 +18,6 @@ install_ansible() {
   sudo apt-get install --upgrade ansible -y
 }
 
-
-
 if [ $# -eq 0 ]; then
   echo "Execute <./setup.sh -h> for more options."
 
@@ -26,7 +25,7 @@ else
   case $1 in
     install_ansible) install_ansible
     ;;
-    version) version
+    setup_node) setup_node
     ;;
     *)
     echo "        ./$(basename $0) setup_node"

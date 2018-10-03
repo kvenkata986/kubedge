@@ -3,9 +3,15 @@
   hosts: "{{ hostname | default('127.0.0.1') }}"
   sudo: yes
   gather_facts: false
+  vars_files:
+      - ../group_vars/all
   tasks:
   - name: Update repositories cache and install aptitude required for apt-get upgrade
-    apt: name=aptitude state=latest update_cache=yes
+    apt: name={{ item }} state=latest update_cache=yes
+    with_items: "{{ packages_to_be_installed }}"
 
   - name: upgrade packages
     apt: upgrade=yes
+
+  - name: Comment Configurations in dhcpd.conf
+    replace: dest="/etc/dhcp/dhcpd.conf" regexp="^option domain-name" replace="# option domain-name"
