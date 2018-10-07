@@ -11,5 +11,5 @@ install:
   - sudo apt-get install yamllint
 
 script:
-  - yamllint playbooks/.
-  - yamllint roles/.
+  - find . -name "*.yml" -print -exec  yamllint -d "{extends: relaxed, rules: {line-length: {max: 120}}}" {} \;
+  - find . -name "*.yaml" -print -exec  yamllint -d "{extends: relaxed, rules: {line-length: {max: 120}}}" {} \;
