@@ -19,3 +19,8 @@ packages_to_be_installed:
 #routers:
 #max_lease_time:
 #domian_name:
+
+#####################################################################################
+## Setup System Hostname. By Default its kubemaster-pi                             ##
+#####################################################################################
+#hostname:
