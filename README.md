@@ -1,5 +1,5 @@
 # kubedge
-Deploy Resilient Kubernetes in Raspberry Pi
+Deploy Resilient Kubernetes in Raspberry 3B Pi
 
 Clone kubedge repo
     
